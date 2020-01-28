@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
  * This is where you'll add the contract code which defines how the [IOUState] behaves. Looks at the unit tests in
  * [IOUContractTests] for instructions on how to complete the [IOUContract] class.
  */
+@LegalProseReference(uri = "<prose_contract_uri>")
 public class IOUContract implements Contract {
     public static final String IOU_CONTRACT_ID = "net.corda.training.contract.IOUContract";
 

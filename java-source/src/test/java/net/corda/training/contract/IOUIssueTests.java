@@ -2,6 +2,7 @@ package net.corda.training.contract;
 
 import net.corda.core.contracts.*;
 import net.corda.finance.Currencies;
+import net.corda.testing.contracts.DummyState;
 import net.corda.testing.node.MockServices;
 import net.corda.core.transactions.LedgerTransaction;
 import net.corda.training.state.IOUState;

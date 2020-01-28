@@ -31,27 +31,27 @@ import static net.corda.training.contract.IOUContract.Commands.*;
  */
 public class IOUIssueFlow {
 
-    @InitiatingFlow
-    @StartableByRPC
-    public static class InitiatorFlow extends FlowLogic<SignedTransaction> {
+	@InitiatingFlow
+	@StartableByRPC
+	public static class InitiatorFlow extends FlowLogic<SignedTransaction> {
 
-        public InitiatorFlow(IOUState state) {
-        }
+		public InitiatorFlow(IOUState state) {
+		}
 
-        // This is a mock function to prevent errors. Delete the body of the function before starting development.
-        public SignedTransaction call() throws FlowException {
-            final Party notary = getServiceHub().getNetworkMapCache().getNotaryIdentities().get(0);
-            final TransactionBuilder builder = new TransactionBuilder(notary);
-            final SignedTransaction ptx = getServiceHub().signInitialTransaction(builder);
+		// This is a mock function to prevent errors. Delete the body of the function before starting development.
+		public SignedTransaction call() throws FlowException {
+			final Party notary = getServiceHub().getNetworkMapCache().getNotaryIdentities().get(0);
+			final TransactionBuilder builder = new TransactionBuilder(notary);
+			final SignedTransaction ptx = getServiceHub().signInitialTransaction(builder);
 			final List<FlowSession> sessions = Arrays.asList(initiateFlow(getOurIdentity()));
 			return subFlow(new FinalityFlow(ptx, sessions));
-        }
-    }
+		}
+	}
 
 	/**
 	 * This is the flow which signs IOU issuances.
 	 * The signing is handled by the [SignTransactionFlow].
-     * Uncomment the initiatedBy annotation to facilitate the responder flow.
+	 * Uncomment the initiatedBy annotation to facilitate the responder flow.
 	 */
 
 	@InitiatedBy(IOUIssueFlow.InitiatorFlow.class)
